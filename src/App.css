@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,12 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+input,
+textarea {
+  display: block;
+}
+form {
+  background-color: rgb(227, 11, 11);
 }
