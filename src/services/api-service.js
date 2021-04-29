@@ -14,4 +14,33 @@ function createReview(data) {
   }).then((res) => res.json());
 }
 
-export { fetchReviews, createReview };
+function deleteReview(id) {
+  return fetch(`${BASE_URL_REVIEWS}/${id}`, {
+    method: "DELETE",
+  }).then((res) => res.json());
+}
+
+function updateReview({
+  name,
+  vehicle_name,
+  date_rented,
+  description,
+  rating,
+  id,
+}) {
+  return fetch(`${BASE_URL_REVIEWS}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "Application/json",
+    },
+    body: JSON.stringify({
+      name,
+      vehicle_name,
+      date_rented,
+      description,
+      rating,
+    }),
+  }).then((res) => res.json());
+}
+
+export { fetchReviews, createReview, deleteReview, updateReview };

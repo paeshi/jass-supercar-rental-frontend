@@ -1,17 +1,25 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { fetchReviews, createReview } from "./services/api-service";
+import {
+  fetchReviews,
+  createReview,
+  deleteReview,
+  updateReview,
+} from "./services/api-service";
 import Reviews from "./components/Reviews";
 import ReviewForm from "./components/ReviewForm";
+import Aside from "./components/Aside";
+import Main from "./components/Main";
 
 function App() {
-  const [reviewsState, setReviewsState] = useState([]);
-  // useState({ reviews: [] });
+  const [reviewsState, setReviewsState] = useState({ reviews: [] });
+
+  // useState([]);
 
   useEffect(() => {
     async function getReviews() {
       const reviews = await fetchReviews();
-      setReviewsState(reviews);
+      setReviewsState({ reviews });
     }
     getReviews();
   }, []);
@@ -25,28 +33,54 @@ function App() {
     }
   }
 
+  async function handleDelete(reviewId) {
+    try {
+      const reviews = await deleteReview(reviewId);
+      setReviewsState({ reviews });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleUpdate(formInputs) {
+    try {
+      const reviews = await updateReview(formInputs);
+      setReviewsState({ reviews });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
-      <ReviewForm
+      <div className="container">
+        <Aside handleAdd={handleAdd} />
+        <Main
+          reviews={reviewsState.reviews}
+          handleDelete={handleDelete}
+          handleUpdate={handleUpdate}
+        />
+
+        {/* <ReviewForm
         handleAdd={handleAdd}
         reviewsState={reviewsState}
         setReviewsState={setReviewsState}
         useState={useState}
-      />
-      {/* <div>{reviewsState.reviews[0].name}</div> */}
-      {/* {console.log(reviewsState[0].vehicle_name)} */}
-      {reviewsState.map((review) => (
-        <Reviews
-          key={review.id}
-          name={review.name}
-          vehicle_name={review.vehicle_name}
-          date_rented={review.date_rented}
-          description={review.description}
-          rating={review.rating}
-        />
-      ))}
+      /> */}
+        {/* <div>{reviewsState.reviews[0].name}</div> */}
+        {/* {console.log(reviewsState[0].vehicle_name)} */}
+        {/* {reviewsState.map((review) => (
+          <Reviews
+            key={review.id}
+            name={review.name}
+            vehicle_name={review.vehicle_name}
+            date_rented={review.date_rented}
+            description={review.description}
+            rating={review.rating}
+          />
+        ))} */}
 
-      {/* <Main />
+        {/* <Main />
       <Header />
       <Reviews />
       <Vehicles />
@@ -54,6 +88,7 @@ function App() {
       <AboutUs />
 
       <Footer /> */}
+      </div>
     </div>
   );
 }
