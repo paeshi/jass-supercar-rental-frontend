@@ -6,8 +6,7 @@ import {
   deleteReview,
   updateReview,
 } from "./services/api-service";
-import Reviews from "./components/Reviews";
-import ReviewForm from "./components/ReviewForm";
+
 import Aside from "./components/Aside";
 import Main from "./components/Main";
 

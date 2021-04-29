@@ -1,5 +1,14 @@
 // function Input({ name, type, value, placeholder, handleChange }) {
-function Input({ name, title, type, value, placeholder, handleChange }) {
+function ReviewInput({
+  name,
+  title,
+  type,
+  min,
+  max,
+  value,
+  placeholder,
+  handleChange,
+}) {
   return (
     <>
       <label></label>
@@ -10,9 +19,11 @@ function Input({ name, title, type, value, placeholder, handleChange }) {
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        min={min}
+        max={max}
       />
     </>
   );
 }
 
-export default Input;
+export default ReviewInput;
