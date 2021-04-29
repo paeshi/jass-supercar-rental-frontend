@@ -1,7 +1,8 @@
+// function Input({ name, type, value, placeholder, handleChange }) {
 function Input({ name, title, type, value, placeholder, handleChange }) {
   return (
     <>
-      <label htmlFor={name}>{title}</label>
+      <label></label>
       <input
         id={name}
         name={name}
