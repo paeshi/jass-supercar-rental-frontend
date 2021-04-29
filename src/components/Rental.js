@@ -1,19 +1,27 @@
-import RentalForm from './Form.js';
+// import { useState } from 'react';
+// import RentalForm from './RentalForm.js';
 
-function Rental(props) {
-    return (
-        <div className="RentalPage">
-            <div className="container">
-                <RentalImg />
+// function Rental({ rental, handleDelete, handleUpdate }) {
+    
+//     const [editFormVisible, setEditFormVisible] = useState(false);
 
-                <RentalForm handleAdd={handleAdd} />
+//     function toggleForm() {
+//       setEditFormVisible(!editFormVisible);
+//     }
+    
+//     return (
+//         <div className="RentalPage">
+//             <div className="container">
+                
 
-            </div>
-        </div>
-    );
-}
+//                 <RentalForm handleAdd={handleAdd} />
 
-export default Rental;
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default Rental;
 
 
 

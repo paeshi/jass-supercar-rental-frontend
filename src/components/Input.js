@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 function Input({ 
-    name, 
-    email, 
-    phone_number, 
-    message, 
-    pickup_date,
-    dropoff_date, 
+    name,
+    title, 
+    type,
+    value,
+    placeholder,
     handleChange 
 }) {
       return (
@@ -24,8 +22,8 @@ function Input({
   }
   
   export default Input;
-=======
-function Input({ name, title, type, value, placeholder, handleChange }) {
+
+  function Input({ name, title, type, value, placeholder, handleChange }) {
   return (
     <>
       <label htmlFor={name}>{title}</label>
@@ -42,4 +40,3 @@ function Input({ name, title, type, value, placeholder, handleChange }) {
 }
 
 export default Input;
->>>>>>> 73a54548c44ba409a25571896c19354703a9589e

@@ -8,13 +8,27 @@ function RentalForm(props) {
         phone_number: '',
         message: '',
         pickup_date: '',
-        dropoff_date: '',
-
+        dropoff_date: ''
     });
 
+    useEffect(() => {
+        const {name, email, phone_number, message, pickup_date, dropoff_date} = props.rental;
+        return (<h3>'Your form has been recieved. We will contact you as soon as possible.'</h3>);
+    }, [props.rental]);
 
+    function handleChange(event) {
+        setRentalFormState(prevState => ({
+          ...prevState,
+          [event.target.id] : event.target.value
+        }));
+    }
 
-    
+    function handleSubmit(event) {
+        event.preventDefault();
+        props.handleAdd(rentalFormState);
+    }
+        
+
     return (
         <form onSubmit={handleSubmit}>
             <label for="name">Full Name</label>
