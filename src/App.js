@@ -5,15 +5,17 @@ import {
   createReview,
   deleteReview,
   updateReview,
+  fetchRentals,
+  deleteRental,
+  createRental,
 } from "./services/api-service";
 
 import Aside from "./components/Aside";
 import Main from "./components/Main";
+import RentalPage from "./components/RentalPage";
 
 function App() {
   const [reviewsState, setReviewsState] = useState({ reviews: [] });
-
-  // useState([]);
 
   useEffect(() => {
     async function getReviews() {
@@ -50,43 +52,49 @@ function App() {
     }
   }
 
+  // rentals functions
+  const [rentalsState, setRentalsState] = useState({ rentals: [] });
+
+  useEffect(() => {
+    async function getRentals() {
+      const rentals = await fetchRentals();
+      setRentalsState({ rentals });
+    }
+    getRentals();
+  }, []);
+
+  async function handleRentalDelete(rentalId) {
+    try {
+      const rentals = await deleteRental(rentalId);
+      setRentalsState({ rentals });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function handleRentalAdd(formInputs) {
+    try {
+      const rentals = await createRental(formInputs);
+      setRentalsState({ rentals });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
       <div className="container">
         <Aside handleAdd={handleAdd} />
+
         <Main
           reviews={reviewsState.reviews}
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}
         />
-
-        {/* <ReviewForm
-        handleAdd={handleAdd}
-        reviewsState={reviewsState}
-        setReviewsState={setReviewsState}
-        useState={useState}
-      /> */}
-        {/* <div>{reviewsState.reviews[0].name}</div> */}
-        {/* {console.log(reviewsState[0].vehicle_name)} */}
-        {/* {reviewsState.map((review) => (
-          <Reviews
-            key={review.id}
-            name={review.name}
-            vehicle_name={review.vehicle_name}
-            date_rented={review.date_rented}
-            description={review.description}
-            rating={review.rating}
-          />
-        ))} */}
-
-        {/* <Main />
-      <Header />
-      <Reviews />
-      <Vehicles />
-      <Rentals />
-      <AboutUs />
-
-      <Footer /> */}
+        <RentalPage
+          rentals={rentalsState.rentals}
+          handleRentalDelete={handleRentalDelete}
+          handleRentalAdd={handleRentalAdd}
+        />
       </div>
     </div>
   );

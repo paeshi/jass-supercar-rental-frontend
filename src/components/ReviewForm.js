@@ -49,7 +49,7 @@ function ReviewForm(props) {
     }
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="review-form">
       <ReviewInput
         handleChange={handleChange}
         name="name"
@@ -93,7 +93,7 @@ function ReviewForm(props) {
       <ReviewInput
         handleChange={handleChange}
         name="rating"
-        placeholder="Rating"
+        placeholder="#"
         type="number"
         min="1"
         max="5"
