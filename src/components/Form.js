@@ -18,6 +18,7 @@ function Form(props) {
         date_rented,
         description,
         rating,
+        id,
       } = props.review;
       setFormState({
         name,
@@ -25,6 +26,7 @@ function Form(props) {
         date_rented,
         description,
         rating,
+        id,
       });
     }
   }, [props.editFormVisible, props.review]);

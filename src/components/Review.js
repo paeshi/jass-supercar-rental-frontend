@@ -22,6 +22,8 @@ function Review({ review, handleDelete, handleUpdate }) {
           <p>{review.vehicle_name}</p>
           <p>{review.description}</p>
           <p>{review.rating}</p>
+          <p>{review.id}</p>
+
           <small>{review.date_rented}</small>
           <button onClick={() => handleDelete(review.id)}>X</button>
           <button onClick={toggleForm}>Edit</button>
