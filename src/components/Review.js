@@ -31,7 +31,7 @@ function Review({ review, handleDelete, handleUpdate }) {
             Rating: <span>{review.rating}</span>
           </p>
           <p>
-            Date Rented: <p>{review.date_rented}</p>
+            Date Rented: <span>{review.date_rented}</span>
           </p>
           <button onClick={() => handleDelete(review.id)}>X</button>
           <button onClick={toggleForm}>Edit</button>

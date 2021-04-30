@@ -67,6 +67,18 @@ function createRental(data) {
   }).then((res) => res.json());
 }
 
+const BASE_URL_VEHICLES = "http://localhost:3000/vehicles";
+
+function fetchVehicles() {
+  return fetch(BASE_URL_VEHICLES).then((res) => res.json());
+}
+
+function deleteVehicle(id) {
+  return fetch(`${BASE_URL_VEHICLES}/${id}`, {
+    method: "DELETE",
+  }).then((res) => res.json());
+}
+
 export {
   fetchReviews,
   createReview,
@@ -75,4 +87,6 @@ export {
   fetchRentals,
   deleteRental,
   createRental,
+  fetchVehicles,
+  deleteVehicle,
 };

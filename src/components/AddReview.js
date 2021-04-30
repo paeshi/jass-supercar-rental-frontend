@@ -1,12 +1,12 @@
 import ReviewForm from "./ReviewForm";
 
-function Aside(props) {
+function AddReview(props) {
   return (
-    <aside>
+    <div>
       <h1>Reviews </h1>
       <ReviewForm handleAdd={props.handleAdd} />
-    </aside>
+    </div>
   );
 }
 
-export default Aside;
+export default AddReview;

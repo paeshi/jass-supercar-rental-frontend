@@ -8,11 +8,15 @@ import {
   fetchRentals,
   deleteRental,
   createRental,
+  fetchVehicles,
+  deleteVehicle,
 } from "./services/api-service";
 
-import Aside from "./components/Aside";
-import Main from "./components/Main";
+import AddReview from "./components/AddReview";
+// import Main from "./components/Main";
+import Reviews from "./components/Reviews";
 import RentalPage from "./components/RentalPage";
+import VehiclesDisplay from "./components/VehiclesDisplay";
 
 function App() {
   const [reviewsState, setReviewsState] = useState({ reviews: [] });
@@ -80,12 +84,40 @@ function App() {
     }
   }
 
+  const [vehiclesState, setVehiclesState] = useState({ vehicles: [] });
+
+  useEffect(() => {
+    async function getVehicles() {
+      const vehicles = await fetchVehicles();
+      setVehiclesState({ vehicles });
+    }
+    getVehicles();
+  }, []);
+
+  async function handleVehicleDelete(vehicleId) {
+    try {
+      const vehicles = await deleteVehicle(vehicleId);
+      setVehiclesState({ vehicles });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
       <div className="container">
-        <Aside handleAdd={handleAdd} />
+        <VehiclesDisplay
+          vehicles={vehiclesState.vehicles}
+          handleVehicleDelete={handleVehicleDelete}
+        />
+        <AddReview handleAdd={handleAdd} />
 
-        <Main
+        {/* <Main
+          reviews={reviewsState.reviews}
+          handleDelete={handleDelete}
+          handleUpdate={handleUpdate}
+        /> */}
+        <Reviews
           reviews={reviewsState.reviews}
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}
