@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Form from "./Form";
+import ReviewForm from "./ReviewForm";
 
 function Review({ review, handleDelete, handleUpdate }) {
   const [editFormVisible, setEditFormVisible] = useState(false);
@@ -9,7 +9,7 @@ function Review({ review, handleDelete, handleUpdate }) {
   return (
     <>
       {editFormVisible ? (
-        <Form
+        <ReviewForm
           editFormVisible={editFormVisible}
           toggleForm={toggleForm}
           handleUpdate={handleUpdate}
@@ -18,11 +18,21 @@ function Review({ review, handleDelete, handleUpdate }) {
       ) : (
         <div className="review">
           <hr />
-          <p>{review.name}</p>
-          <p>{review.vehicle_name}</p>
-          <p>{review.description}</p>
-          <p>{review.rating}</p>
-          <small>{review.date_rented}</small>
+          <p>
+            Name: <span>{review.name}</span>
+          </p>
+          <p>
+            Supercar Rented: <span>{review.vehicle_name}</span>
+          </p>
+          <p>
+            Review: <span>{review.description}</span>
+          </p>
+          <p>
+            Rating: <span>{review.rating}</span>
+          </p>
+          <p>
+            Date Rented: <p>{review.date_rented}</p>
+          </p>
           <button onClick={() => handleDelete(review.id)}>X</button>
           <button onClick={toggleForm}>Edit</button>
         </div>

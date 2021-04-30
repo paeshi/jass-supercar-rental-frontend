@@ -43,4 +43,90 @@ function updateReview({
   }).then((res) => res.json());
 }
 
-export { fetchReviews, createReview, deleteReview, updateReview };
+// rentals functions
+
+const BASE_URL_RENTALS = "http://localhost:3000/rentals";
+
+function fetchRentals() {
+  return fetch(BASE_URL_RENTALS).then((res) => res.json());
+}
+
+function deleteRental(id) {
+  return fetch(`${BASE_URL_RENTALS}/${id}`, {
+    method: "DELETE",
+  }).then((res) => res.json());
+}
+
+function createRental(data) {
+  return fetch(BASE_URL_RENTALS, {
+    method: "POST",
+    headers: {
+      "Content-type": "Application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+}
+
+// Vehicle Functions ========================================
+const BASE_URL_VEHICLES = "http://localhost:3000/vehicles";
+
+function fetchVehicles() {
+  return fetch(BASE_URL_VEHICLES).then((res) => res.json());
+}
+
+function createVehicle(data) {
+  return fetch(BASE_URL_VEHICLES, {
+    method: "POST",
+    headers: {
+      "Content-type": "Application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+}
+
+function deleteVehicle(id) {
+  return fetch(`${BASE_URL_VEHICLE}/${id}`, {
+    method: "DELETE",
+  }).then((res) => res.json());
+}
+
+function updateVehicle({
+  make, 
+  model, 
+  year, 
+  description, 
+  price, 
+  img_url, 
+  availability, 
+  id,
+}) {
+  return fetch(`${BASE_URL_REVIEWS}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "Application/json",
+    },
+    body: JSON.stringify({
+      make, 
+      model, 
+      year, 
+      description, 
+      price, 
+      img_url, 
+      availability, 
+    }),
+  }).then((res) => res.json());
+}
+
+export {
+  fetchReviews,
+  createReview,
+  deleteReview,
+  updateReview,
+  fetchRentals,
+  deleteRental,
+  createRental,
+  fetchVehicles,
+  createVehicle,
+  deleteVehicle,
+  updateVehicle,
+};

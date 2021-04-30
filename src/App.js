@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 import './App.css';
 import './components/RentalForm';
 import RentalForm from './components/RentalForm';
-=======
+
 import "./App.css";
 import { useState, useEffect } from "react";
 import {
@@ -10,17 +9,23 @@ import {
   createReview,
   deleteReview,
   updateReview,
+  fetchRentals,
+  deleteRental,
+  createRental,
+  fetchVehicles,
+  createVehicle,
+  deleteVehicle,
+  updateVehicle,
 } from "./services/api-service";
-import Reviews from "./components/Reviews";
-import ReviewForm from "./components/ReviewForm";
+
 import Aside from "./components/Aside";
 import Main from "./components/Main";
->>>>>>> 73a54548c44ba409a25571896c19354703a9589e
+
+import RentalPage from "./components/RentalPage";
+
 
 function App() {
   const [reviewsState, setReviewsState] = useState({ reviews: [] });
-
-  // useState([]);
 
   useEffect(() => {
     async function getReviews() {
@@ -57,51 +62,100 @@ function App() {
     }
   }
 
+  // rentals functions
+  const [rentalsState, setRentalsState] = useState({ rentals: [] });
+
+  useEffect(() => {
+    async function getRentals() {
+      const rentals = await fetchRentals();
+      setRentalsState({ rentals });
+    }
+    getRentals();
+  }, []);
+
+  async function handleRentalDelete(rentalId) {
+    try {
+      const rentals = await deleteRental(rentalId);
+      setRentalsState({ rentals });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function handleRentalAdd(formInputs) {
+    try {
+      const rentals = await createRental(formInputs);
+      setRentalsState({ rentals });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Vehicle Section =======================
+  const [vehiclesState, setVehiclesState] = useState({ vehicles: [] });
+
+  useEffect(() => {
+    async function getVehicles() {
+      const vehicles = await fetchVehicles();
+      setVehiclesState({ vehicles });
+    }
+    getVehicles();
+  }, []);
+
+  async function handleAdd(vehicleFormInputs) {
+    try {
+      const vehicles = await createVehicle(vehicleFormInputs);
+      setVehiclesState({ vehicles });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleDelete(vehicleId) {
+    try {
+      const vehicles = await deleteVehicle(vehicleId);
+      setVehiclesState({ vehicles });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleUpdate(vehicleFormInputs) {
+    try {
+      const vehicles = await updateVehicle(vehicleFormInputs);
+      setVehiclesState({ vehicles });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
-<<<<<<< HEAD
+
       <header className="App-header">
         <RentalForm />
 
       </header>
-=======
+
       <div className="container">
         <Aside handleAdd={handleAdd} />
+
         <Main
           reviews={reviewsState.reviews}
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}
         />
-
-        {/* <ReviewForm
-        handleAdd={handleAdd}
-        reviewsState={reviewsState}
-        setReviewsState={setReviewsState}
-        useState={useState}
-      /> */}
-        {/* <div>{reviewsState.reviews[0].name}</div> */}
-        {/* {console.log(reviewsState[0].vehicle_name)} */}
-        {/* {reviewsState.map((review) => (
-          <Reviews
-            key={review.id}
-            name={review.name}
-            vehicle_name={review.vehicle_name}
-            date_rented={review.date_rented}
-            description={review.description}
-            rating={review.rating}
-          />
-        ))} */}
-
-        {/* <Main />
-      <Header />
-      <Reviews />
-      <Vehicles />
-      <Rentals />
-      <AboutUs />
-
-      <Footer /> */}
+        <RentalPage
+          rentals={rentalsState.rentals}
+          handleRentalDelete={handleRentalDelete}
+          handleRentalAdd={handleRentalAdd}
+        />
+        <RentalPage
+          vehicles={vehiclesState.vehicles}
+          handleRentalDelete={handleVehicleDelete}
+          handleRentalAdd={handleVehicleUpdate}
+        />
       </div>
->>>>>>> 73a54548c44ba409a25571896c19354703a9589e
+
     </div>
   );
 }

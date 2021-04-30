@@ -41,6 +41,12 @@ input,
 textarea {
   display: block;
 }
-form {
+#review-form {
   background-color: rgb(227, 11, 11);
+}
+#rental-form {
+  background-color: blue;
+}
+.rental {
+  border: 3px solid orange;
 }
