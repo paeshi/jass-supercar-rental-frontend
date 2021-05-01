@@ -1,4 +1,4 @@
-function ReviewInput({
+const RentalTextArea = ({
   name,
   title,
   type,
@@ -7,11 +7,11 @@ function ReviewInput({
   value,
   placeholder,
   handleChange,
-}) {
+}) => {
   return (
     <>
       <label></label>
-      <input
+      <textarea
         id={name}
         name={name}
         type={type}
@@ -23,6 +23,5 @@ function ReviewInput({
       />
     </>
   );
-}
-
-export default ReviewInput;
+};
+export default RentalTextArea;

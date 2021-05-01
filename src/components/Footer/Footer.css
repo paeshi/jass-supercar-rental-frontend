@@ -1,0 +1,20 @@
+footer > h6 {
+    color: white;
+    text-align: center;
+}
+
+footer > p {
+    text-align: center;
+    padding-top: 30px;
+    color: peachpuff;
+}
+
+footer {
+    background-color: black;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  } 

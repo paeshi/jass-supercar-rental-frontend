@@ -3,6 +3,7 @@ import Review from "./Review.js";
 function Reviews({ reviews, handleDelete, handleUpdate }) {
   return (
     <div>
+      {/* {console.log(reviews)} */}
       {reviews.map((review) => (
         <Review
           key={review.id}

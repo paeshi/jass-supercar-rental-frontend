@@ -9,7 +9,7 @@ function Review({ review, handleDelete, handleUpdate }) {
   return (
     <>
       {editFormVisible ? (
-        <Form
+        <ReviewForm
           editFormVisible={editFormVisible}
           toggleForm={toggleForm}
           handleUpdate={handleUpdate}
@@ -18,12 +18,22 @@ function Review({ review, handleDelete, handleUpdate }) {
       ) : (
         <div className="review">
           <hr />
-          <p>{review.name}</p>
-          <p>{review.vehicle_name}</p>
-          <p>{review.description}</p>
-          <p>{review.rating}</p>
-          <small>{review.date_rented}</small>
-          <button onClick={() => handleDelete(review.id)}>Delete</button>
+          <p>
+            Name: <span>{review.name}</span>
+          </p>
+          <p>
+            Supercar Rented: <span>{review.vehicle_name}</span>
+          </p>
+          <p>
+            Review: <span>{review.description}</span>
+          </p>
+          <p>
+            Rating: <span>{review.rating}</span>
+          </p>
+          <p>
+            Date Rented: <span>{review.date_rented}</span>
+          </p>
+          <button onClick={() => handleDelete(review.id)}>X</button>
           <button onClick={toggleForm}>Edit</button>
         </div>
       )}

@@ -1,0 +1,23 @@
+h1 {
+  color: white;
+  font-size: 3vw;
+  font-family: 'Bebas Neue', cursive;
+  padding-top: 10px;
+  padding-left: 30px;
+  
+}
+
+header {
+    background-color: black;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  } 
+  
+  
+  img {
+    background-size: 100%, auto;    
+    height: auto;
+  }

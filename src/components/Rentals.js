@@ -1,18 +1,18 @@
-import Rental from './Rental.js';
+import Rental from "./Rental";
 
-function Rentals({ rentals, handleDelete, handleUpdate }) {
-    return (
-      <div>
-        {rentals.map(rental => 
-          <Rental 
-            key={rental.id} 
-            rental={rental}
-            handleDelete={handleDelete}
-            handleUpdate={handleUpdate}
-          />
-        )}
-      </div>
-    );
-}
+const Rentals = ({ rentals, handleRentalDelete, handleRentalAdd }) => {
+  return (
+    <div>
+      {rentals.map((rental) => (
+        <Rental
+          key={rental.id}
+          rental={rental}
+          handleRentalDelete={handleRentalDelete}
+          handleRentalAdd={handleRentalAdd}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default Rentals;

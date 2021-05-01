@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import './App.css';
-import './components/RentalForm';
-import RentalForm from './components/RentalForm';
-=======
 import "./App.css";
 import { useState, useEffect } from "react";
 import {
@@ -10,17 +5,24 @@ import {
   createReview,
   deleteReview,
   updateReview,
+  fetchRentals,
+  deleteRental,
+  createRental,
+  fetchVehicles,
+  deleteVehicle,
 } from "./services/api-service";
+
+import AddReview from "./components/AddReview";
+// import Main from "./components/Main";
 import Reviews from "./components/Reviews";
-import ReviewForm from "./components/ReviewForm";
-import Aside from "./components/Aside";
-import Main from "./components/Main";
->>>>>>> 73a54548c44ba409a25571896c19354703a9589e
+import RentalPage from "./components/RentalPage";
+import VehiclesDisplay from "./components/VehiclesDisplay/VehiclesDisplay";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
 
 function App() {
   const [reviewsState, setReviewsState] = useState({ reviews: [] });
-
-  // useState([]);
 
   useEffect(() => {
     async function getReviews() {
@@ -57,51 +59,80 @@ function App() {
     }
   }
 
+  // rentals functions
+  const [rentalsState, setRentalsState] = useState({ rentals: [] });
+
+  useEffect(() => {
+    async function getRentals() {
+      const rentals = await fetchRentals();
+      setRentalsState({ rentals });
+    }
+    getRentals();
+  }, []);
+
+  async function handleRentalDelete(rentalId) {
+    try {
+      const rentals = await deleteRental(rentalId);
+      setRentalsState({ rentals });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function handleRentalAdd(formInputs) {
+    try {
+      const rentals = await createRental(formInputs);
+      setRentalsState({ rentals });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const [vehiclesState, setVehiclesState] = useState({ vehicles: [] });
+
+  useEffect(() => {
+    async function getVehicles() {
+      const vehicles = await fetchVehicles();
+      setVehiclesState({ vehicles });
+    }
+    getVehicles();
+  }, []);
+
+  async function handleVehicleDelete(vehicleId) {
+    try {
+      const vehicles = await deleteVehicle(vehicleId);
+      setVehiclesState({ vehicles });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
-<<<<<<< HEAD
-      <header className="App-header">
-        <RentalForm />
+        <Header />
+        <VehiclesDisplay
+          vehicles={vehiclesState.vehicles}
+          handleVehicleDelete={handleVehicleDelete}
+        />
+        <AddReview handleAdd={handleAdd} />
 
-      </header>
-=======
-      <div className="container">
-        <Aside handleAdd={handleAdd} />
-        <Main
+        {/* <Main
+          reviews={reviewsState.reviews}
+          handleDelete={handleDelete}
+          handleUpdate={handleUpdate}
+        /> */}
+        <div className="lower">
+        <Reviews
           reviews={reviewsState.reviews}
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}
         />
-
-        {/* <ReviewForm
-        handleAdd={handleAdd}
-        reviewsState={reviewsState}
-        setReviewsState={setReviewsState}
-        useState={useState}
-      /> */}
-        {/* <div>{reviewsState.reviews[0].name}</div> */}
-        {/* {console.log(reviewsState[0].vehicle_name)} */}
-        {/* {reviewsState.map((review) => (
-          <Reviews
-            key={review.id}
-            name={review.name}
-            vehicle_name={review.vehicle_name}
-            date_rented={review.date_rented}
-            description={review.description}
-            rating={review.rating}
-          />
-        ))} */}
-
-        {/* <Main />
-      <Header />
-      <Reviews />
-      <Vehicles />
-      <Rentals />
-      <AboutUs />
-
-      <Footer /> */}
-      </div>
->>>>>>> 73a54548c44ba409a25571896c19354703a9589e
+        <RentalPage
+          rentals={rentalsState.rentals}
+          handleRentalDelete={handleRentalDelete}
+          handleRentalAdd={handleRentalAdd}
+        />
+        </div>
+        <Footer />
     </div>
   );
 }
