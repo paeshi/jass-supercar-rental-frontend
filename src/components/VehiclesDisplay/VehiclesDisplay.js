@@ -7,29 +7,29 @@ import "./VehiclesDisplay.css";
 const VehiclesDisplay = ({ vehicles, handleVehicleDelete }) => {
 
   //----------------Pagination-----------------------------------
-  const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [vehiclesPerPage] = useState(6);
+  // const [cars, setCars] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [vehiclesPerPage] = useState(6);
 
-  useEffect(() => {
-    const fetchVehicles = async () => {
-      setLoading(true);
-      const res = await axios.get('http://localhost:3000/vehicles');
-      setCars(res.data);
-      setLoading(false);
-    };
+  // useEffect(() => {
+  //   const fetchVehicles = async () => {
+  //     setLoading(true);
+  //     const res = await axios.get('http://localhost:3000/vehicles');
+  //     setCars(res.data);
+  //     setLoading(false);
+  //   };
 
-    fetchVehicles();
-  }, []);
+  //   fetchVehicles();
+  // }, []);
 
-  // Get current posts
-  const indexOfLastVehicle = currentPage * vehiclesPerPage;
-  const indexOfFirstVehicle = indexOfLastVehicle - vehiclesPerPage;
-  const currentVehicles = cars.slice(indexOfFirstVehicle, indexOfLastVehicle);
+  // // Get current posts
+  // const indexOfLastVehicle = currentPage * vehiclesPerPage;
+  // const indexOfFirstVehicle = indexOfLastVehicle - vehiclesPerPage;
+  // const currentVehicles = cars.slice(indexOfFirstVehicle, indexOfLastVehicle);
 
-  // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  // // Change page
+  // const paginate = pageNumber => setCurrentPage(pageNumber);
 
   //---------------------------------------------------------------
 
@@ -42,15 +42,15 @@ const VehiclesDisplay = ({ vehicles, handleVehicleDelete }) => {
           key={vehicle.id}
           vehicle={vehicle}
           handleVehicleDelete={handleVehicleDelete}
-          vehicles={currentVehicles} loading={loading}
+          // vehicles={currentVehicles} loading={loading}
         />
       ))}
     </div>
-        <Pagination
+        {/* <Pagination
           vehiclesPerPage={vehiclesPerPage}
           totalVehicles={cars.length}
           paginate={paginate}
-        />
+        /> */}
       </>
     
   );

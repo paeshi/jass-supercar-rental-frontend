@@ -1,6 +1,11 @@
-footer > h6 {
+footer > h5, h6 {
     color: white;
     text-align: center;
+}
+
+footer > h5 {
+    font-family: 'Bebas Neue', cursive;
+
 }
 
 footer > p {

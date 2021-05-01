@@ -1,23 +1,43 @@
 h1 {
-  color: white;
-  font-size: 3vw;
-  font-family: 'Bebas Neue', cursive;
-  padding-top: 10px;
-  padding-left: 30px;
-  
+    color: white;
+    font-size: 3vw;
+    font-family: 'Bebas Neue', cursive;
+    padding-top: 10px;
+    padding-left: 20px;
+    
 }
 
 header {
     background-color: black;
     max-width: 100%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} 
+
+ul {
+    list-style-type: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    
-  } 
+    padding-top: 10px;
+}
+
+a {
+    margin-left: 80px;
+    margin-right: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+
+}
   
   
-  img {
+img {
     background-size: 100%, auto;    
     height: auto;
-  }
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
