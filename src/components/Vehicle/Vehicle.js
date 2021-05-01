@@ -8,19 +8,19 @@ const Vehicle = ({ vehicle, handleVehicleDelete }) => {
     <div className="container">
       <hr />
       <p>
-        Make: <span>{vehicle.make}</span>
+        <p className="bold">Make:</p> <span>{vehicle.make}</span>
       </p>
       <p>
-        Model: <span>{vehicle.model}</span>
+        <p className="bold">Model:</p> <span>{vehicle.model}</span>
       </p>
       <p>
-        Year: <span>{vehicle.year}</span>
+        <p className="bold">Year:</p> <span>{vehicle.year}</span>
       </p>
       <p>
-        Specs: <span>{vehicle.description}</span>
+        <p className="bold">Specs:</p> <span>{vehicle.description}</span>
       </p>
       <p>
-        Price: <span>{vehicle.price}</span>
+        <p className="bold">Price:</p> <span>{vehicle.price}</span>
       </p>
       {/* <p>
         Avalability: <p>{vehicle.availability}</p>

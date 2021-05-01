@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import Pagination from '../Pagination';
+// import { useState, useEffect } from "react";
+// import Pagination from '../Pagination';
 import Vehicle from "../Vehicle/Vehicle";
-import axios from 'axios';
+// import axios from 'axios';
 import "./VehiclesDisplay.css";
 
 const VehiclesDisplay = ({ vehicles, handleVehicleDelete }) => {
@@ -35,7 +35,7 @@ const VehiclesDisplay = ({ vehicles, handleVehicleDelete }) => {
 
   return (
     <>
-    <div>
+    <div className="gallery">
       {vehicles.map((vehicle) => (
         
         <Vehicle
