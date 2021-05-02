@@ -1,0 +1,23 @@
+footer > h5,
+h6 {
+  color: white;
+  text-align: center;
+  font-size: 1em;
+}
+
+footer > h5 {
+  font-family: "Bebas Neue";
+}
+
+footer > p {
+  text-align: center;
+  padding-top: 30px;
+  color: peachpuff;
+}
+
+footer {
+  background-color: black;
+  width: 100%;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
