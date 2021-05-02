@@ -11,17 +11,38 @@ import {
   fetchVehicles,
   deleteVehicle,
 } from "./services/api-service";
+import Header1 from "./components/Header/Header1";
+import Footer from "./components/Footer/Footer";
 
 import AddReview from "./components/AddReview";
-// import Main from "./components/Main";
+
 import Reviews from "./components/Reviews";
 import RentalPage from "./components/RentalPage";
 import VehiclesDisplay from "./components/VehiclesDisplay";
 
+import { auth } from "./services/firebase.js";
+import ReviewSlider from "./components/ReviewSlider";
+
 function App() {
-  const [reviewsState, setReviewsState] = useState({ reviews: [] });
+  const [state, setState] = useState({ user: null });
+  const [reviewsState, setReviewsState] = useState({
+    reviews: [],
+  });
 
   useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setState((prevState) => ({
+          ...prevState,
+          user,
+        }));
+      } else {
+        setState((prevState) => ({
+          ...prevState,
+          user: null,
+        }));
+      }
+    });
     async function getReviews() {
       const reviews = await fetchReviews();
       setReviewsState({ reviews });
@@ -106,27 +127,32 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <VehiclesDisplay
-          vehicles={vehiclesState.vehicles}
-          handleVehicleDelete={handleVehicleDelete}
-        />
-        <AddReview handleAdd={handleAdd} />
+        {/* {console.log(reviewsState.user)} */}
+        <Header1 user={state.user} />
 
-        {/* <Main
-          reviews={reviewsState.reviews}
-          handleDelete={handleDelete}
-          handleUpdate={handleUpdate}
-        /> */}
-        <Reviews
-          reviews={reviewsState.reviews}
-          handleDelete={handleDelete}
-          handleUpdate={handleUpdate}
-        />
-        <RentalPage
-          rentals={rentalsState.rentals}
-          handleRentalDelete={handleRentalDelete}
-          handleRentalAdd={handleRentalAdd}
-        />
+        <main>
+          <ReviewSlider />
+          <VehiclesDisplay
+            vehicles={vehiclesState.vehicles}
+            handleVehicleDelete={handleVehicleDelete}
+          />
+          <RentalPage
+            rentals={rentalsState.rentals}
+            handleRentalDelete={handleRentalDelete}
+            handleRentalAdd={handleRentalAdd}
+          />
+
+          <AddReview handleAdd={handleAdd} user={state.user} />
+
+          <Reviews
+            reviews={reviewsState.reviews}
+            handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
+            user={reviewsState.user}
+          />
+        </main>
+
+        <Footer />
       </div>
     </div>
   );

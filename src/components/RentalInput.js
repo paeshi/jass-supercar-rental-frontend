@@ -1,7 +1,7 @@
-function RentalInput({ name, title, type, value, placeholder, handleChange }) {
+function RentalInput({ name, type, value, placeholder, handleChange }) {
   return (
     <>
-      <label htmlFor={name}>{title}</label>
+      <label htmlFor={name}>{name}</label>
       <input
         id={name}
         name={name}

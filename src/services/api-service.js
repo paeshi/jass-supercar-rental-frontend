@@ -1,4 +1,4 @@
-const BASE_URL_REVIEWS = "http://localhost:3000/reviews";
+const BASE_URL_REVIEWS = "https://jass-backend.herokuapp.com/reviews";
 
 function fetchReviews() {
   return fetch(BASE_URL_REVIEWS).then((res) => res.json());
@@ -45,7 +45,7 @@ function updateReview({
 
 // rentals functions
 
-const BASE_URL_RENTALS = "http://localhost:3000/rentals";
+const BASE_URL_RENTALS = "https://jass-backend.herokuapp.com/rentals";
 
 function fetchRentals() {
   return fetch(BASE_URL_RENTALS).then((res) => res.json());
@@ -67,7 +67,7 @@ function createRental(data) {
   }).then((res) => res.json());
 }
 
-const BASE_URL_VEHICLES = "http://localhost:3000/vehicles";
+const BASE_URL_VEHICLES = "https://jass-backend.herokuapp.com/vehicles";
 
 function fetchVehicles() {
   return fetch(BASE_URL_VEHICLES).then((res) => res.json());

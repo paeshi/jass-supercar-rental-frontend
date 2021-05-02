@@ -5,20 +5,10 @@ import RentalTextArea from "./RentalTextArea";
 function RentalForm(props) {
   const [formState, setFormState] = useState({
     name: "",
-    eamil: "",
+    email: "",
     phone_number: "",
     message: "",
   });
-
-  //   useEffect(() => {
-  //     const { name, email, phone_number, id } = props.rental;
-  //     setFormState({
-  //       name,
-  //       email,
-  //       phone_number,
-  //       id,
-  //     });
-  //   }, [props.rental]);
 
   useEffect(() => {
     if (props.editFormVisible) {
@@ -39,12 +29,6 @@ function RentalForm(props) {
       [event.target.id]: event.target.value,
     }));
   }
-
-  //   function handleSubmit(event) {
-  //     event.preventDefault();
-  //     props.handleRentalAdd(formState);
-  //     alert("thanks our rep will contact you shortly");
-  //   }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -72,7 +56,7 @@ function RentalForm(props) {
         handleChange={handleChange}
         name="email"
         placeholder="Email"
-        type="text"
+        type="email"
         value={formState.email}
         id="email"
       />

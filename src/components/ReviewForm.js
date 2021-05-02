@@ -74,14 +74,6 @@ function ReviewForm(props) {
         value={formState.date_rented}
         id="date_rented"
       />
-      {/* <ReviewInput
-        handleChange={handleChange}
-        name="description"
-        placeholder="Description"
-        type="text"
-        value={formState.description}
-        id="description"
-      /> */}
       <ReviewTextArea
         handleChange={handleChange}
         name="description"
@@ -93,14 +85,18 @@ function ReviewForm(props) {
       <ReviewInput
         handleChange={handleChange}
         name="rating"
-        placeholder="#"
+        placeholder="1-5"
         type="number"
         min="1"
         max="5"
         value={formState.rating}
         id="rating"
       />
-      <input type="submit" value={props.editFormVisible ? "Update" : "Add"} />
+      <input
+        style={{ width: "5em", backgroundColor: "silver" }}
+        type="submit"
+        value={props.editFormVisible ? "Update" : "Add"}
+      />
     </form>
   );
 }

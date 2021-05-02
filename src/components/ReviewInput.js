@@ -1,4 +1,3 @@
-// function Input({ name, type, value, placeholder, handleChange }) {
 function ReviewInput({
   name,
   title,

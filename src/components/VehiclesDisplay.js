@@ -2,7 +2,7 @@ import Vehicle from "./Vehicle";
 
 const VehiclesDisplay = ({ vehicles, handleVehicleDelete }) => {
   return (
-    <div>
+    <div className="vehicle-container">
       {vehicles.map((vehicle) => (
         <Vehicle
           key={vehicle.id}

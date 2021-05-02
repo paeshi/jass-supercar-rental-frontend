@@ -7,7 +7,7 @@ function Review({ review, handleDelete, handleUpdate }) {
     setEditFormVisible(!editFormVisible);
   }
   return (
-    <>
+    <div className="review-card">
       {editFormVisible ? (
         <ReviewForm
           editFormVisible={editFormVisible}
@@ -37,7 +37,7 @@ function Review({ review, handleDelete, handleUpdate }) {
           <button onClick={toggleForm}>Edit</button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

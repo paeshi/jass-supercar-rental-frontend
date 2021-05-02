@@ -10,7 +10,7 @@ const RentalTextArea = ({
 }) => {
   return (
     <>
-      <label></label>
+      <label htmlFor={name}>{name}</label>
       <textarea
         id={name}
         name={name}

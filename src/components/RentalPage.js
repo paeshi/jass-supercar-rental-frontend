@@ -3,8 +3,8 @@ import RentalForm from "./RentalForm";
 
 const RentalPage = ({ rentals, handleRentalDelete, handleRentalAdd }) => {
   return (
-    <div>
-      <h2>RENTALS</h2>
+    <div className="rentals-container">
+      <h2 className="rental-banner">Rental Form:</h2>
       <RentalForm
         rentals={rentals}
         handleRentalDelete={handleRentalDelete}

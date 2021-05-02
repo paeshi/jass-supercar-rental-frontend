@@ -12,7 +12,6 @@ function Rental({ rental, handleRentalDelete, handleRentalAdd }) {
         <RentalForm
           editFormVisible={editFormVisible}
           toggleForm={toggleForm}
-          //   handleUpdate={handleUpdate}
           rental={rental}
           handleRentalDelete={handleRentalDelete}
           handleRentalAdd={handleRentalAdd}
