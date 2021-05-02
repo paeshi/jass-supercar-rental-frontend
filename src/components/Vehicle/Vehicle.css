@@ -19,3 +19,14 @@
 span {
     text-align: left;
 }
+
+.vehicle-info {
+    text-decoration: none;
+}
+
+.bold-text {
+    display: inline;
+    color: black;
+    font-size: 1em;
+
+}

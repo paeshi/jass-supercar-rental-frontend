@@ -7,21 +7,21 @@ const Vehicle = ({ vehicle, handleVehicleDelete }) => {
     <>
     <div className="container">
       <hr />
-      <p>
-        <p className="bold">Make:</p> <span>{vehicle.make}</span>
-      </p>
-      <p>
-        <p className="bold">Model:</p> <span>{vehicle.model}</span>
-      </p>
-      <p>
-        <p className="bold">Year:</p> <span>{vehicle.year}</span>
-      </p>
-      <p>
-        <p className="bold">Specs:</p> <span>{vehicle.description}</span>
-      </p>
-      <p>
-        <p className="bold">Price:</p> <span>{vehicle.price}</span>
-      </p>
+      
+        <p><h6 className="bold-text">Make: </h6> <span className="vehicle-info">{vehicle.make}</span></p>
+      
+    
+        <p><h6 className="bold-text">Model: </h6><span className="vehicle-info">{vehicle.model}</span></p>
+      
+    
+        <p><h6 className="bold-text">Year: </h6><span className="vehicle-info">{vehicle.year}</span></p>
+      
+    
+        <p><h6 className="bold-text">Specs: </h6><span className="vehicle-info">{JSON.parse(vehicle.description)}</span></p>
+      
+    
+        <p><h6 className="bold-text">Price: </h6><span className="vehicle-info">{vehicle.price}</span></p>
+      
       {/* <p>
         Avalability: <p>{vehicle.availability}</p>
       </p> */}

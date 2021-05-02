@@ -1,6 +1,7 @@
-div {
-    display: flex;
-    flex-direction: column;
+.gallery {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     padding-top: 30px;
     padding-bottom: 30px;
 
